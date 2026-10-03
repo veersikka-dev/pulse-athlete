@@ -38,6 +38,7 @@
   --glass:rgba(19,24,22,.72); color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;font-stretch:100%}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;
@@ -450,6 +451,21 @@ textarea.input{height:auto;min-height:74px;padding:12px 14px;resize:vertical}
 .mp-vol{flex:1;min-width:0;accent-color:var(--accent)}
 .kick{animation:kick .28s cubic-bezier(.2,.9,.3,1)}
 @keyframes kick{0%{transform:scale(1.55)}100%{transform:scale(1)}}
+.mp-row{display:flex;align-items:center;gap:8px;max-width:100%}
+.mp-stop{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;box-shadow:0 14px 34px -14px rgba(0,0,0,.55);flex:none;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.mp-stop:hover{transform:scale(1.08)}
+.mp-stop svg{width:14px;height:14px}
+.mp-x{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:var(--ink-3);border:1px solid var(--line-2);flex:none}
+.mp-x:hover{color:var(--ink);border-color:var(--ink)}
+.mp-x svg{width:13px;height:13px}
+.mp-off{display:flex;align-items:center;justify-content:center;gap:8px;height:38px;border-radius:10px;border:1px solid var(--line-2);font-size:13px;font-weight:600;color:var(--ink-2);transition:all .15s}
+.mp-off:hover{color:var(--bad);border-color:var(--bad)}
+.mp-off svg{width:15px;height:15px}
+.mp.off .mp-btn{width:44px;height:44px;padding:0;justify-content:center;opacity:.75}
+.mp.off .mp-btn:hover{opacity:1}
+.mp.off .mp-btn .eq,.mp.off .mp-btn .mp-label{display:none}
+.mp-btn .muted{display:none;width:18px;height:18px}
+.mp.off .mp-btn .muted{display:block}
 @media (max-width:860px){body.in-app .mp{bottom:calc(84px + env(safe-area-inset-bottom,0px));right:16px}}
 @media (max-width:560px){.mp-btn .mp-label{max-width:140px}}
 
@@ -501,7 +517,7 @@ textarea.input{height:auto;min-height:74px;padding:12px 14px;resize:vertical}
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <div class="mp" id="mp">
   <div class="mp-panel" id="mp-panel" hidden role="dialog" aria-label="Pulse Radio">
-    <div class="mp-head"><span class="eyebrow">Pulse Radio</span><span class="xs faint">Made live in your browser</span></div>
+    <div class="mp-head"><div style="display:flex;flex-direction:column;gap:2px"><span class="eyebrow">Pulse Radio</span><span class="xs faint">Made live in your browser</span></div><button class="mp-x" id="mp-close" aria-label="Close player"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <canvas id="mp-viz" width="608" height="128" aria-hidden="true"></canvas>
     <div class="mp-now"><b id="mp-name">Iron Hour</b><span id="mp-meta">Heavy lifting · 140 BPM</span></div>
     <div class="mp-cue" id="mp-cue" aria-live="polite"></div>
@@ -512,8 +528,10 @@ textarea.input{height:auto;min-height:74px;padding:12px 14px;resize:vertical}
       <button class="mp-skip" id="mp-next" aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 6h2v12h-2zM14 12 5 18V6z"/></svg></button>
       <input type="range" class="mp-vol" id="mp-vol" min="0" max="1" step="0.01" value="0.55" aria-label="Volume">
     </div>
+    <button class="mp-off" id="mp-off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5zM22 9l-6 6M16 9l6 6"/></svg>Turn music off</button>
   </div>
-  <button class="mp-btn" id="mp-btn" aria-expanded="false" aria-controls="mp-panel"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="mp-label" id="mp-label">Gym music</span></button>
+  <div class="mp-row"><button class="mp-stop" id="mp-stop" aria-label="Stop music" hidden><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></button>
+  <button class="mp-btn" id="mp-btn" aria-expanded="false" aria-controls="mp-panel"><span class="eq"><i></i><i></i><i></i><i></i></span><svg class="muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M2 2l20 20"/></svg><span class="mp-label" id="mp-label">Gym music</span></button></div>
 </div>
 <canvas id="fx" aria-hidden="true"></canvas>
 
@@ -1586,9 +1604,9 @@ const Radio = (() => {
   const ROOT = [45, 41, 48, 43];
   const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
   let ctx, master, comp, duck, music, drums, rev, analyser, noise, timer, fbuf;
-  let playing = false, step = 0, next = 0, cur = 1, vol = 0.55, cueI = 0, auto = true;
-  try { const s = JSON.parse(localStorage.getItem('pulse.radio') || '{}'); if (s.t != null) cur = s.t; if (s.v != null) vol = s.v; if (s.a === false) auto = false; } catch (e) {}
-  const persist = () => { try { localStorage.setItem('pulse.radio', JSON.stringify({ t: cur, v: vol, a: auto })); } catch (e) {} };
+  let playing = false, step = 0, next = 0, cur = 1, vol = 0.55, cueI = 0, auto = true, off = false;
+  try { const s = JSON.parse(localStorage.getItem('pulse.radio') || '{}'); if (s.t != null) cur = s.t; if (s.v != null) vol = s.v; if (s.a === false) auto = false; if (s.o) off = true; } catch (e) {}
+  const persist = () => { try { localStorage.setItem('pulse.radio', JSON.stringify({ t: cur, v: vol, a: auto, o: off })); } catch (e) {} };
 
   function init() {
     ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1712,11 +1730,13 @@ const Radio = (() => {
   function ui() {
     const T = TRACKS[cur];
     $('#mp-name').textContent = T.name; $('#mp-meta').textContent = `${T.tag} · ${T.bpm} BPM`;
-    $('#mp-label').textContent = playing ? `${T.name} · ${T.bpm} BPM` : (auto && !ctx ? 'Tap anywhere for music' : 'Gym music');
+    $('#mp-label').textContent = playing ? `${T.name} · ${T.bpm} BPM` : (off ? '' : auto && !ctx ? 'Tap anywhere for music' : 'Gym music');
     const pb = $('#mp-play'); pb.setAttribute('aria-label', playing ? 'Pause' : 'Play');
     pb.innerHTML = playing ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>' : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
     $('#mp-list').innerHTML = TRACKS.map((t, i) => `<button data-t="${i}" aria-pressed="${i === cur}"><span class="n">${i === cur && playing ? '▶' : String(i + 1).padStart(2, '0')}</span><span><b>${t.name}</b><span>${t.tag}</span></span><span class="mono xs faint">${t.bpm}</span></button>`).join('');
     $('#mp-vol').value = vol;
+    $('#mp').classList.toggle('off', off); $('#mp-stop').hidden = !playing;
+    $('#mp-btn').setAttribute('aria-label', off ? 'Music is off. Turn it back on' : 'Open music player');
     if (!playing) $$('#mp-btn .eq i').forEach((b, i) => b.style.height = [30, 55, 40, 65][i] + '%');
   }
   let raf = 0;
@@ -1739,21 +1759,25 @@ const Radio = (() => {
   }
   function bind() {
     const panel = $('#mp-panel'), btn = $('#mp-btn');
-    btn.addEventListener('click', () => { const open = panel.hidden; panel.hidden = !open; btn.setAttribute('aria-expanded', open); btn.classList.remove('ask'); if (open) { ui(); if (playing) loop(); } });
-    $('#mp-play').addEventListener('click', () => { auto = !playing; persist(); playing ? stop() : start(); });
+    const closePanel = () => { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+    $('#mp-close').addEventListener('click', closePanel);
+    $('#mp-stop').addEventListener('click', () => { auto = false; persist(); stop(); });
+    $('#mp-off').addEventListener('click', () => { off = true; auto = false; persist(); stop(); closePanel(); toast('Music off. Tap the note icon to bring it back.'); });
+    btn.addEventListener('click', () => { if (off) { off = false; auto = true; persist(); ui(); } const open = panel.hidden; panel.hidden = !open; btn.setAttribute('aria-expanded', open); btn.classList.remove('ask'); if (open) { ui(); if (playing) loop(); } });
+    $('#mp-play').addEventListener('click', () => { auto = !playing; off = false; persist(); playing ? stop() : start(); });
     $('#mp-prev').addEventListener('click', () => setTrack(cur - 1));
     $('#mp-next').addEventListener('click', () => setTrack(cur + 1));
     $('#mp-list').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (!b) return; const i = +b.dataset.t; if (i === cur && playing) return; setTrack(i); if (!playing) start(); });
     $('#mp-vol').addEventListener('input', e => { vol = +e.target.value; persist(); if (ctx && playing) master.gain.setTargetAtTime(vol, ctx.currentTime, 0.05); });
     // background music: browsers only allow sound after a gesture, so start on the first one
-    const first = e => { removeEventListener('pointerdown', first, true); removeEventListener('keydown', first, true); if (!auto || playing) return; if (e.target.closest && e.target.closest('#mp-play')) return; start(); };
+    const first = e => { removeEventListener('pointerdown', first, true); removeEventListener('keydown', first, true); if (!auto || off || playing) return; if (e.target.closest && e.target.closest('#mp')) return; if (e.target.closest && e.target.closest('#mp-play')) return; start(); };
     addEventListener('pointerdown', first, true); addEventListener('keydown', first, true);
     document.addEventListener('visibilitychange', () => { if (playing && ctx) tick(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.focus(); } });
     ui();
   }
   // suggest a track that fits what the athlete is doing, without auto-playing
-  function suggest(i, label) { if (playing) { if (i !== cur) setTrack(i); return; } cur = i; persist(); ui(); $('#mp-label').textContent = label; const b = $('#mp-btn'); b.classList.remove('ask'); void b.offsetWidth; b.classList.add('ask'); }
+  function suggest(i, label) { if (off) return; if (playing) { if (i !== cur) setTrack(i); return; } cur = i; persist(); ui(); $('#mp-label').textContent = label; const b = $('#mp-btn'); b.classList.remove('ask'); void b.offsetWidth; b.classList.add('ask'); }
   return { bind, suggest, get playing() { return playing; } };
 })();
 
