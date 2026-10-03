@@ -349,6 +349,74 @@ textarea.input{height:auto;min-height:74px;padding:12px 14px;resize:vertical}
 .stagger>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
 .stagger>*:nth-child(2){animation-delay:.05s}.stagger>*:nth-child(3){animation-delay:.1s}.stagger>*:nth-child(4){animation-delay:.15s}.stagger>*:nth-child(5){animation-delay:.2s}.stagger>*:nth-child(6){animation-delay:.25s}
 
+/* ---------- motion layer ---------- */
+.quiet .view-in,.quiet .stagger>*,.quiet .rise,.quiet .page-head h1,.quiet .week>.day{animation:none!important}
+.btn-primary{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);transform:translateX(-130%);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.btn-primary:hover::after{transform:translateX(130%)}
+.btn{transition:transform .35s cubic-bezier(.2,.9,.3,1.2), background .2s, box-shadow .25s, color .2s}
+.chip{transition:background .2s,color .2s,border-color .2s,transform .35s cubic-bezier(.3,1.6,.5,1)}
+.chip:active,.scale5 button:active,.rpe button:active{transform:scale(.93)}
+.opt:active{transform:scale(.98)}
+.reveal-line{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.reveal-line>span{display:inline-block;animation:lineup 1s cubic-bezier(.2,.8,.1,1) both}
+.reveal-line:nth-child(2)>span{animation-delay:.09s}.reveal-line:nth-child(3)>span{animation-delay:.18s}
+@keyframes lineup{from{transform:translateY(108%) skewY(4deg)}to{transform:none}}
+.page-head h1{animation:clipup .8s cubic-bezier(.2,.8,.1,1) both}
+@keyframes clipup{from{clip-path:inset(0 0 100% 0);transform:translateY(14px)}to{clip-path:inset(-10% 0 -10% 0);transform:none}}
+.ecg{width:100%;max-width:520px;height:36px;display:block;overflow:visible}
+.ecg path{fill:none;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.ecg .base{stroke:var(--line-2)}
+.ecg .beat{stroke:var(--accent);stroke-width:2.2;stroke-dasharray:70 530;animation:ecg 3.2s linear infinite;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--accent) 70%,transparent))}
+@keyframes ecg{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq-track{display:flex;width:max-content;animation:mq 46s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track span{font-family:var(--f-display);font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:22px;color:var(--ink-3);padding-right:28px;display:flex;align-items:center;gap:28px;white-space:nowrap;transition:color .2s}
+.mq-track span:hover{color:var(--ink)}
+.mq-track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.pcard{animation:float 7s ease-in-out infinite}
+.pc2{animation-delay:-2s}.pc3{animation-delay:-4.5s}.pc4{animation-delay:-1s;animation-duration:8s}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 13%,transparent),transparent 62%);opacity:0;transition:opacity .6s}
+.glow.on{opacity:1}
+.sr{transform:translateY(26px);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.sr.in{transform:none}
+.nav{position:relative}
+.nav button{z-index:1}
+.nav button[aria-current="page"]{background:transparent;box-shadow:none}
+.nav button[aria-current="page"]::before{content:none}
+.nav-ind{position:absolute;left:0;top:0;border-radius:10px;background:var(--surface);box-shadow:var(--shadow);transition:transform .5s cubic-bezier(.3,1.25,.5,1),width .3s,height .3s,opacity .2s;pointer-events:none}
+.nav .nav-ind::before{content:"";position:absolute;left:-16px;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:var(--accent)}
+.tabbar .nav-ind{background:var(--accent-soft);box-shadow:none}
+.tabbar button{position:relative;z-index:1}
+.session-hero .lanes{animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-34px,16px) rotate(-5deg)}}
+.set{position:relative}
+.set.pop{animation:pop .5s cubic-bezier(.3,1.7,.5,1)}
+.set.pop::after{content:"";position:absolute;inset:-2px;border-radius:12px;border:2px solid var(--good);animation:ripple .65s ease-out forwards;pointer-events:none}
+@keyframes pop{0%{transform:scale(.78)}100%{transform:scale(1.04)}}
+@keyframes ripple{to{inset:-11px;opacity:0}}
+.glass.filling i{animation:fillup .7s cubic-bezier(.2,.8,.2,1)}
+@keyframes fillup{0%{height:0}70%{height:84%}100%{height:78%}}
+.flash{animation:flash 1.3s ease-out}
+@keyframes flash{0%{background:var(--accent-soft)}100%{background:transparent}}
+.swapin{animation:viewin .45s cubic-bezier(.2,.7,.2,1) both}
+.week>.day{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.week>.day:nth-child(2){animation-delay:.03s}.week>.day:nth-child(3){animation-delay:.06s}.week>.day:nth-child(4){animation-delay:.09s}.week>.day:nth-child(5){animation-delay:.12s}.week>.day:nth-child(6){animation-delay:.15s}.week>.day:nth-child(7){animation-delay:.18s}
+.ob-card.slide-next{animation:slnext .5s cubic-bezier(.2,.8,.2,1) both}
+.ob-card.slide-back{animation:slback .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slnext{from{opacity:.2;transform:translateX(36px)}to{opacity:1;transform:none}}
+@keyframes slback{from{opacity:.2;transform:translateX(-36px)}to{opacity:1;transform:none}}
+.score{display:inline-block}
+.sample-banner{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+::view-transition-old(root){animation:vtout .28s ease both}
+::view-transition-new(root){animation:vtin .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vtout{to{opacity:0;transform:scale(.985)}}
+@keyframes vtin{from{opacity:0;transform:translateY(10px)}}
+@media (hover:none){.glow{display:none}}
+
 @media (max-width:1020px){
   .hero{grid-template-columns:1fr}
   .preview{min-height:440px}
@@ -849,6 +917,11 @@ function ring(val, max, size, stroke, color, center) {
   const r = (size - stroke) / 2, c = 2 * Math.PI * r, pct = max > 0 ? clamp(val / max, 0, 1) : 0;
   return `<div class="ring" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}"><circle class="trk" cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke-width="${stroke}"/><circle class="val" cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}" data-off="${c * (1 - pct)}"/></svg><div class="ctr">${center}</div></div>`;
 }
+function ecg() {
+  let d = 'M0,22';
+  for (let k = 0; k < 4; k++) { const x = k * 150; d += ` L${x + 50},22 L${x + 58},22 L${x + 63},14 L${x + 69},31 L${x + 75},3 L${x + 81},27 L${x + 86},22 L${x + 150},22`; }
+  return `<svg class="ecg rise" style="animation-delay:.28s" viewBox="0 0 600 36" preserveAspectRatio="none" aria-hidden="true"><path class="base" d="${d}"/><path class="beat" d="${d}" pathLength="600"/></svg>`;
+}
 function stadium(r) { return `M70,${70 - r} H170 A${r},${r} 0 0 1 170,${70 + r} H70 A${r},${r} 0 0 1 70,${70 - r} Z`; }
 function oval(done, planned, runner = true) {
   const pct = planned ? clamp(done / planned, 0, 1) : 0;
@@ -861,19 +934,44 @@ function oval(done, planned, runner = true) {
     <text x="120" y="84" text-anchor="middle" style="font-family:var(--f-mono);font-size:8.5px;letter-spacing:.12em;fill:var(--ink-3)">SESSIONS</text>
   </svg>`;
 }
-function animateIn(root = document) {
+function snapshot(root) {
+  return { off: $$('[data-off]', root).map(e => e.getAttribute('stroke-dashoffset')), w: $$('[data-w]', root).map(e => e.style.width), c: $$('[data-count]', root).map(e => parseFloat(e.textContent)) };
+}
+function animateIn(root = document, prev = null) {
+  const offs = $$('[data-off]', root), ws = $$('[data-w]', root), cs = $$('[data-count]', root);
+  // on in-place updates, start each meter from where it was so it glides to the new value
+  if (prev) { offs.forEach((el, i) => { if (prev.off[i] != null) el.setAttribute('stroke-dashoffset', prev.off[i]); }); ws.forEach((el, i) => { if (prev.w[i]) el.style.width = prev.w[i]; }); cs.forEach((el, i) => { if (!isNaN(prev.c[i])) el.textContent = prev.c[i]; }); }
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    $$('[data-off]', root).forEach(el => el.setAttribute('stroke-dashoffset', el.dataset.off));
-    $$('[data-w]', root).forEach(el => el.style.width = el.dataset.w);
-    $$('[data-count]', root).forEach(el => countUp(el));
+    offs.forEach(el => el.setAttribute('stroke-dashoffset', el.dataset.off));
+    ws.forEach(el => el.style.width = el.dataset.w);
+    cs.forEach((el, i) => countUp(el, prev && !isNaN(prev.c[i]) ? prev.c[i] : 0));
   }));
 }
-function countUp(el) {
+function countUp(el, from = 0) {
   const to = +el.dataset.count, dec = +(el.dataset.dec || 0);
-  if (REDUCED) { el.textContent = to.toFixed(dec); return; }
-  const t0 = performance.now(), dur = 900;
-  const step = t => { const k = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - k, 3); el.textContent = (to * e).toFixed(dec); if (k < 1) requestAnimationFrame(step); };
+  if (REDUCED || from === to) { el.textContent = to.toFixed(dec); return; }
+  const t0 = performance.now(), dur = from ? 600 : 1000;
+  const step = t => { const k = clamp((t - t0) / dur, 0, 1), e = 1 - Math.pow(1 - k, 3); el.textContent = (from + (to - from) * e).toFixed(dec); if (k < 1) requestAnimationFrame(step); };
   requestAnimationFrame(step);
+}
+const navPos = {};
+function placeNav() {
+  $$('.nav, .tabbar').forEach(n => {
+    const ind = n.querySelector('.nav-ind'), cur = n.querySelector('[aria-current]'); if (!ind) return;
+    const key = n.classList.contains('nav') ? 'rail' : 'tab';
+    if (!cur || !cur.offsetWidth) { ind.style.opacity = 0; return; }
+    const pos = { x: cur.offsetLeft, y: cur.offsetTop, w: cur.offsetWidth, h: cur.offsetHeight };
+    const apply = p => { ind.style.transform = `translate(${p.x}px,${p.y}px)`; ind.style.width = p.w + 'px'; ind.style.height = p.h + 'px'; };
+    ind.style.transition = 'none'; apply(navPos[key] || pos); ind.style.opacity = 1; void ind.offsetWidth;
+    ind.style.transition = ''; apply(pos); navPos[key] = pos;
+  });
+}
+let io = null;
+function observeReveal(quiet) {
+  const els = $$('.sr:not(.in)');
+  if (quiet || REDUCED || !('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+  io = io || new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(e => io.observe(e));
 }
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('on'), 2400); }
 function burst() {
@@ -902,13 +1000,14 @@ function viewLanding() {
   const tg = targets(demo.profile);
   S = keep;
   const lanes = Array.from({ length: 6 }, (_, i) => `<path d="${stadium(60 - i * 9)}" fill="none" stroke="currentColor" stroke-width=".8"/>`).join('');
-  return `<div class="landing">
+  return `<div class="glow" id="glow"></div><div class="landing">
     <header class="topbar rise"><div class="logo"><span class="dot"></span>PULSE</div>
       <div class="row"><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button><button class="btn btn-ghost btn-sm" data-act="sample">See a sample athlete</button></div></header>
     <section class="hero">
       <div class="hero-copy">
         <span class="eyebrow rise" style="animation-delay:.05s">Training and fuel for student athletes</span>
-        <h1 class="rise" style="animation-delay:.1s">Train<br><span class="o">with</span><br><span class="acc">intent.</span></h1>
+        <h1><span class="reveal-line"><span>Train</span></span><span class="reveal-line"><span class="o">with</span></span><span class="reveal-line"><span class="acc">intent.</span></span></h1>
+        ${ecg()}
         <p class="lede rise" style="animation-delay:.18s">Tell Pulse your sport, your kit and your week. It builds a four-week block that fits your school gym, sets your food targets by the gram, and adjusts each day to how you slept.</p>
         <div class="hero-ctas rise" style="animation-delay:.24s"><button class="btn btn-primary" data-act="start">Build my plan ${I.arrow}</button><button class="btn btn-ghost" data-act="sample">Explore a sample athlete</button></div>
         <div class="facts rise" style="animation-delay:.3s"><div class="fact"><b>14</b><span>sports with prep drills</span></div><div class="fact"><b>4 wk</b><span>Base, Build, Peak, Deload</span></div><div class="fact"><b>2 min</b><span>to your first session</span></div></div>
@@ -926,10 +1025,11 @@ function viewLanding() {
         </div>
       </div>
     </section>
+    <div class="marquee sr" aria-hidden="true"><div class="mq-track">${[0, 1].map(() => Object.values(SPORTS).map(s => `<span>${esc(s.split(' (')[0])}</span>`).join('')).join('')}</div></div>
     <section class="features">
-      <div class="feature card spot"><span class="k">PLAN</span><h3>Fits the kit you actually have</h3><p>Pick what your school gym or home has. Every exercise is chosen to match it, with one-tap swaps when a station is taken.</p></div>
-      <div class="feature card spot"><span class="k">FUEL</span><h3>Food targets by the gram</h3><p>Calories, protein, carbs and water worked out from your body, goal and climate. Meal ideas match your diet and skip your allergens.</p></div>
-      <div class="feature card spot"><span class="k">READINESS</span><h3>Adjusts to how you feel</h3><p>A 10-second check-in on sleep, soreness and energy tells you whether to push, hold back or recover today.</p></div>
+      <div class="feature card spot sr"><span class="k">PLAN</span><h3>Fits the kit you actually have</h3><p>Pick what your school gym or home has. Every exercise is chosen to match it, with one-tap swaps when a station is taken.</p></div>
+      <div class="feature card spot sr" style="transition-delay:.08s"><span class="k">FUEL</span><h3>Food targets by the gram</h3><p>Calories, protein, carbs and water worked out from your body, goal and climate. Meal ideas match your diet and skip your allergens.</p></div>
+      <div class="feature card spot sr" style="transition-delay:.16s"><span class="k">READINESS</span><h3>Adjusts to how you feel</h3><p>A 10-second check-in on sleep, soreness and energy tells you whether to push, hold back or recover today.</p></div>
     </section>
     <footer class="foot"><span>Pulse gives general guidance, not medical advice. Check with a coach, parent or doctor before starting a new programme.</span><span class="mono">Your data stays on this device unless you are signed in.</span></footer>
   </div>`;
@@ -1012,7 +1112,7 @@ function viewOnboard() {
     <header class="topbar"><div class="logo"><span class="dot"></span>PULSE</div><button class="btn btn-ghost btn-sm" data-act="${edit ? 'cancel-edit' : 'home'}">${edit ? 'Cancel' : 'Back to start'}</button></header>
     <div class="steps" aria-label="Step ${s + 1} of 5">${OB_STEPS.map((_, i) => `<div class="s ${i <= s ? 'on' : ''}"><i></i></div>`).join('')}</div>
     <div class="ob-grid">
-      <form class="ob-card view-in" id="obform" novalidate>${obStepHTML()}
+      <form class="ob-card ${UI.obDir === 'back' ? 'slide-back' : 'slide-next'}" id="obform" novalidate>${obStepHTML()}
         <div class="ob-nav">${s > 0 ? `<button type="button" class="btn btn-ghost" data-act="ob-back">${I.back} Back</button>` : '<span></span>'}
           ${s < 4 ? `<button type="submit" class="btn btn-primary">Continue ${I.arrow}</button>` : `<button type="submit" class="btn btn-primary">${edit ? 'Save and rebuild plan' : 'Build my plan'} ${I.arrow}</button>`}</div>
       </form>
@@ -1046,7 +1146,7 @@ function finishOnboarding() {
 function viewBuilding() {
   const p = UI.draft;
   return `<div class="building"><div class="logo" style="font-size:28px"><span class="dot"></span>PULSE</div>
-    <div style="width:260px">${oval(0, 1)}</div>
+    <div style="width:min(320px,100%)">${ecg()}</div>
     <ul><li>Working out your energy needs</li><li>Choosing exercises for your equipment</li><li>Adding ${p.sports.length ? 'sport prep drills' : 'mobility and core work'}</li><li>Spacing sessions for recovery</li><li>Setting up your four-week block</li></ul></div>`;
 }
 
@@ -1061,14 +1161,14 @@ function viewApp() {
   if (UI.view === 'session') body = viewSession();
   else body = ({ today: viewToday, plan: viewPlan, fuel: viewFuel, progress: viewProgress, profile: viewProfile })[UI.view]();
   return `<div class="shell">
-    <aside class="rail"><div class="logo"><span class="dot"></span>PULSE</div><nav class="nav">${nav}</nav>
+    <aside class="rail"><div class="logo"><span class="dot"></span>PULSE</div><nav class="nav"><span class="nav-ind"></span>${nav}</nav>
       <div class="rail-foot"><div class="who"><div class="avatar">${esc(initial)}</div><div style="min-width:0"><b>${esc(p.name)}</b><span>${esc(GOALS[p.goal].label)}</span></div></div>
       <div class="row between"><div class="sync ${synced ? 'ok' : ''}"><i></i><span>${S.sample ? 'Sample data, not saved' : synced ? 'Synced to your account' : 'Saved on this device'}</span></div><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button></div></div></aside>
     <div style="min-width:0">
       <div class="mtop"><div class="logo"><span class="dot"></span>PULSE</div><div class="row"><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button><div class="avatar" style="width:32px;height:32px;font-size:13px">${esc(initial)}</div></div></div>
       <main class="main view-in" id="main">${S.sample ? `<div class="sample-banner"><span><b>Sample athlete.</b> You are exploring Aarav's plan. Nothing here is saved.</span><button class="btn btn-primary btn-sm" data-act="start">Build my own plan ${I.arrow}</button></div>` : ''}${body}</main>
     </div>
-    <nav class="tabbar">${nav}</nav>
+    <nav class="tabbar"><span class="nav-ind"></span>${nav}</nav>
   </div>`;
 }
 
@@ -1125,7 +1225,7 @@ function viewToday() {
     </div>
     <div class="card lift spot">
       <div class="card-h"><h3>Water</h3><span class="mono small">${(water * 0.25).toFixed(2)} / ${(tg.water / 1000).toFixed(2)} L</span></div>
-      <div class="glasses">${Array.from({ length: wGoal }, (_, i) => `<button class="glass ${i < water ? 'full' : ''}" data-act="water" data-v="${i + 1}" aria-label="${i + 1} glasses"><i></i></button>`).join('')}</div>
+      <div class="glasses">${Array.from({ length: wGoal }, (_, i) => `<button class="glass ${i < water ? 'full' : ''} ${UI.justWater === i ? 'filling' : ''}" data-act="water" data-v="${i + 1}" aria-label="${i + 1} glasses"><i></i></button>`).join('')}</div>
       <p class="xs faint">One glass is 250 ml. ${p.climate === 'hot' ? 'Hot climate: +750 ml added. ' : ''}${sess ? 'Training day: +500 ml.' : ''}</p>
     </div>
     <div class="card lift spot">
@@ -1161,7 +1261,7 @@ function viewPlan() {
         <div class="drill"><span>Potentiate: 2 lighter ramp-up sets of your first exercise</span><span>1 min</span></div></div>
       ${sess.prep ? blockHTML({ t: sess.prep.sport + ' prep', min: 5, items: sess.prep.items, why: 'Injury prevention' }) : ''}
       <div class="block"><div class="block-h"><b>Main work</b><span class="mono xs faint">${sess.exs.length} exercises · ${p.goal === 'endurance' ? 'circuit style' : 'straight sets'}</span></div>
-        ${sess.exs.map((e, i) => `<div class="ex"><span class="ix">${String(i + 1).padStart(2, '0')}</span><div style="min-width:0"><div class="nm">${esc(e.n)}</div><div class="cue">${esc(e.cue)}</div></div>
+        ${sess.exs.map((e, i) => `<div class="ex ${UI.flash === 'ex:' + e.key ? 'flash' : ''}"><span class="ix">${String(i + 1).padStart(2, '0')}</span><div style="min-width:0"><div class="nm">${esc(e.n)}</div><div class="cue">${esc(e.cue)}</div></div>
           <div class="rx"><div class="rx-item"><b>${e.sets} × ${e.reps}</b><span>Sets × reps</span></div><div class="rx-item"><b>${e.rest}s</b><span>Rest</span></div><div class="rx-item"><b>${round(e.rpe, 1)}</b><span>RPE</span></div>
           ${e.alts > 1 ? `<button class="swap" data-act="swap" data-k="${e.key}" aria-label="Swap ${esc(e.n)}">${I.swap}Swap</button>` : ''}</div></div>`).join('')}</div>
       ${sess.blocks.map(blockHTML).join('')}
@@ -1171,7 +1271,7 @@ function viewPlan() {
   return `<div class="page-head"><div><span class="eyebrow">Block week ${wk + 1} · ${PHASES[pi].n}</span><h1 style="margin-top:8px">Your plan</h1><p>${p.sessions} sessions a week · ${p.minutes} min · ${esc(GOALS[p.goal].label)}${(p.sports || []).length ? ' · ' + p.sports.map(s => SPORTS[s].split(' (')[0]).join(', ') : ''}</p></div></div>
   <div class="phase">${PHASES.map((ph, i) => `<div class="${i === pi ? 'on' : ''}"><b>W${i + 1} · ${ph.n}</b><span>${ph.d}</span></div>`).join('')}</div>
   <div class="week">${strip}</div>
-  <div class="view-in">${detail}</div>
+  <div class="${UI.animDetail ? 'swapin' : ''}">${detail}</div>
   <p class="xs faint">RPE is rate of perceived exertion: 10 is an all-out effort, 8 means about two reps left in the tank. Every fourth week is a deload so your body can absorb the work.</p>`;
 }
 function blockHTML(b) { return `<div class="block"><div class="block-h"><b>${esc(b.t)}</b><span class="mono xs faint">${b.min} min · ${esc(b.why)}</span></div>${b.items.map(([n, d]) => `<div class="drill"><span>${esc(n)}</span><span>${esc(d)}</span></div>`).join('')}</div>`; }
@@ -1188,7 +1288,7 @@ function viewSession() {
   <div class="card" style="padding:0;gap:0">
     ${sess.exs.map(e => { const ch = A.checks[e.slot] || [], c = ch.filter(Boolean).length; return `<div class="sess-ex ${c >= e.sets ? 'complete' : ''}">
       <div style="min-width:0"><div class="nm" style="font-weight:650">${esc(e.n)}</div><div class="xs faint mono" style="margin-top:3px">${e.sets} × ${e.reps} · rest ${e.rest}s · RPE ${round(e.rpe, 1)}</div><div class="xs faint" style="margin-top:3px">${esc(e.cue)}</div></div>
-      <div class="row wrap" style="justify-content:flex-end"><div class="sets">${Array.from({ length: e.sets }, (_, i) => `<button class="set" data-act="set" data-s="${e.slot}" data-i="${i}" aria-pressed="${!!ch[i]}" aria-label="Set ${i + 1}">${i + 1}</button>`).join('')}</div>
+      <div class="row wrap" style="justify-content:flex-end"><div class="sets">${Array.from({ length: e.sets }, (_, i) => `<button class="set ${UI.justSet === e.slot + '-' + i ? 'pop' : ''}" data-act="set" data-s="${e.slot}" data-i="${i}" aria-pressed="${!!ch[i]}" aria-label="Set ${i + 1}">${i + 1}</button>`).join('')}</div>
       ${e.pat !== 'core' && e.pat !== 'power' ? `<div class="unit-wrap"><input class="input kg" inputmode="decimal" data-kg="${esc(e.n)}" value="${esc(A.kg[e.n] || '')}" placeholder="load" aria-label="Load for ${esc(e.n)} in kg"><span class="unit">kg</span></div>` : ''}</div></div>`; }).join('')}
   </div>
   ${sess.blocks.map(b => `<div class="card" style="padding:0;gap:0">${blockHTML(b)}</div>`).join('')}
@@ -1214,7 +1314,7 @@ function viewFuel() {
   <div class="grid g-2">
     <div class="card">
       <div class="card-h"><h3>Today's log</h3><span class="mono small faint">${Math.round(eaten.kcal)} kcal</span></div>
-      ${items.length ? `<div>${items.map((it, i) => { const f = it.custom ? [it.custom.name, 'custom', it.custom.kcal] : FOODS[it.id]; if (!f) return ''; return `<div class="food-row"><div style="min-width:0"><div class="fn">${esc(f[0])}</div><div class="fm">${esc(f[1])}</div></div>
+      ${items.length ? `<div>${items.map((it, i) => { const f = it.custom ? [it.custom.name, 'custom', it.custom.kcal] : FOODS[it.id]; if (!f) return ''; return `<div class="food-row ${UI.flash && UI.flash.startsWith('food:') && i >= +UI.flash.slice(5) ? 'flash' : ''}"><div style="min-width:0"><div class="fn">${esc(f[0])}</div><div class="fm">${esc(f[1])}</div></div>
         <div class="stepper"><button data-act="fs" data-i="${i}" data-d="-0.5" aria-label="Less">−</button><span>×${it.s}</span><button data-act="fs" data-i="${i}" data-d="0.5" aria-label="More">+</button></div>
         <div class="row"><span class="fk">${Math.round(f[2] * it.s)}</span><button class="iconbtn" data-act="fdel" data-i="${i}" aria-label="Remove">${I.x}</button></div></div>`; }).join('')}</div>` : `<div class="empty">Nothing logged yet. Add a suggested meal or search below.</div>`}
       <div class="field"><label for="foodq">Add food</label><input id="foodq" class="input" placeholder="Search dal, eggs, rice…" value="${esc(UI.foodQ)}" data-foodq autocomplete="off"></div>
@@ -1305,24 +1405,52 @@ function viewProfile() {
 /* =========================================================
    RENDER + EVENTS
    ========================================================= */
-function render() {
+function render(quiet = false) {
   const app = $('#app');
+  const prev = quiet ? snapshot(app) : null;
+  app.classList.toggle('quiet', quiet);
   if (UI.screen === 'landing') app.innerHTML = viewLanding();
   else if (UI.screen === 'onboard') app.innerHTML = viewOnboard();
   else if (UI.screen === 'building') app.innerHTML = viewBuilding();
   else app.innerHTML = viewApp();
-  animateIn(app);
-  if (UI.screen === 'landing') bindParallax();
+  animateIn(app, prev);
+  placeNav();
+  observeReveal(quiet);
+  UI.justSet = UI.justWater = UI.flash = null; UI.animDetail = false;
+  if (UI.screen === 'landing') bindLanding();
 }
-function rerenderMain() { const m = $('#main'); if (!m) return render(); const y = scrollY; render(); scrollTo(0, y); }
-function bindParallax() {
-  const pv = $('#preview'), st = $('#stage'); if (!pv || REDUCED) return;
-  pv.addEventListener('pointermove', e => { const r = pv.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; st.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`; });
-  pv.addEventListener('pointerleave', () => st.style.transform = '');
+// in-place update: keep scroll, skip entrance animations, let meters glide
+function rerenderMain() { const y = scrollY; render(true); scrollTo(0, y); }
+let glowRAF = 0;
+function bindLanding() {
+  const pv = $('#preview'), st = $('#stage'), glow = $('#glow'); if (REDUCED) return;
+  if (pv) {
+    pv.addEventListener('pointermove', e => { const r = pv.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; st.style.transform = `rotateY(${x * 9}deg) rotateX(${-y * 9}deg)`; });
+    pv.addEventListener('pointerleave', () => st.style.transform = '');
+  }
+  if (!glow) return;
+  // soft light that trails the cursor with a little lag
+  let tx = innerWidth * .7, ty = innerHeight * .35, x = tx, y = ty;
+  const onMove = e => { if (e.pointerType !== 'mouse') return; tx = e.clientX; ty = e.clientY; glow.classList.add('on'); };
+  document.addEventListener('pointermove', onMove);
+  cancelAnimationFrame(glowRAF);
+  const loop = () => { if (!document.body.contains(glow)) { document.removeEventListener('pointermove', onMove); return; } x += (tx - x) * .08; y += (ty - y) * .08; glow.style.transform = `translate(${x}px,${y}px)`; glowRAF = requestAnimationFrame(loop); };
+  loop();
 }
+// primary buttons lean gently toward the cursor
+let magnet = null;
+document.addEventListener('pointermove', e => {
+  const b = e.target.closest && e.target.closest('.btn-primary');
+  if (magnet && magnet !== b) { magnet.style.transform = ''; magnet = null; }
+  if (!b || REDUCED || e.pointerType !== 'mouse') return;
+  const r = b.getBoundingClientRect();
+  b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .16}px,${(e.clientY - r.top - r.height / 2) * .3}px)`;
+  magnet = b;
+});
+addEventListener('resize', () => { for (const k in navPos) delete navPos[k]; placeNav(); });
 document.addEventListener('pointermove', e => { const c = e.target.closest && e.target.closest('.spot'); if (!c) return; const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
 
-function goApp(view) { UI.screen = 'app'; UI.view = view; transition(() => { render(); scrollTo(0, 0); }); }
+function goApp(view) { const inApp = UI.screen === 'app'; UI.screen = 'app'; UI.view = view; const go = () => { render(); scrollTo(0, 0); }; if (inApp) go(); else transition(go); }
 const ACT = {
   theme() { const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('pulse.theme', r.dataset.theme); } catch (e) {} },
   start() { UI.draft = blankDraft(); UI.obStep = 0; UI.errors = {}; UI.editing = false; if (S && S.sample) S = null; UI.screen = 'onboard'; transition(() => { render(); scrollTo(0, 0); }); },
@@ -1330,27 +1458,27 @@ const ACT = {
   home() { UI.screen = (S && !S.sample) ? 'app' : 'landing'; if (S && S.sample) S = null; transition(() => { render(); scrollTo(0, 0); }); },
   'cancel-edit'() { UI.editing = false; goApp('profile'); },
   edit() { UI.draft = { ...blankDraft(), ...S.profile, age: String(S.profile.age), height: String(S.profile.height), weight: String(S.profile.weight) }; UI.obStep = 0; UI.errors = {}; UI.editing = true; UI.screen = 'onboard'; transition(() => { render(); scrollTo(0, 0); }); },
-  'ob-back'() { UI.obStep = Math.max(0, UI.obStep - 1); render(); scrollTo(0, 0); },
+  'ob-back'() { UI.obDir = 'back'; UI.obStep = Math.max(0, UI.obStep - 1); render(); scrollTo(0, 0); },
   pick(el) {
     const g = el.dataset.g, v = el.dataset.v, d = UI.draft;
     d[g] = ['sessions', 'minutes'].includes(g) ? +v : v;
     if (g === 'goal') d.extra = d.extra.filter(x => x !== v);
     if (g === 'sessions' && d.days.length > +v) d.days = d.days.slice(0, +v);
     if (g === 'where' && v === 'home' && !d.equip.length) d.equip = ['dumbbell', 'band'];
-    const y = scrollY; render(); scrollTo(0, y);
+    rerenderMain();
   },
   toggle(el) {
     const g = el.dataset.g, v = g === 'days' ? +el.dataset.v : el.dataset.v, d = UI.draft, arr = d[g];
     const lim = { extra: 2, sports: 3, days: +d.sessions }[g];
     const i = arr.indexOf(v);
     if (i >= 0) arr.splice(i, 1); else { if (lim && arr.length >= lim) { if (g === 'days') arr.shift(); else { toast(`Pick up to ${lim}.`); return; } } arr.push(v); }
-    const y = scrollY; render(); scrollTo(0, y);
+    rerenderMain();
   },
   nav(el) { const v = el.dataset.v; if (v === 'plan') UI.planDay = null; UI.resetArm = false; goApp(v); },
-  planday(el) { UI.planDay = +el.dataset.v; rerenderMain(); },
-  swap(el) { const k = el.dataset.k; S.swaps = S.swaps || {}; S.swaps[k] = (S.swaps[k] || 0) + 1; save(); rerenderMain(); toast('Exercise swapped'); },
+  planday(el) { UI.planDay = +el.dataset.v; UI.animDetail = true; rerenderMain(); },
+  swap(el) { const k = el.dataset.k; S.swaps = S.swaps || {}; S.swaps[k] = (S.swaps[k] || 0) + 1; save(); UI.flash = 'ex:' + k; rerenderMain(); toast('Exercise swapped'); },
   begin() { const t = today(); if (!S.active || S.active.date !== t) S.active = { date: t, checks: {}, kg: {} }; UI.rpe = null; save(); goApp('session'); },
-  set(el) { const s = el.dataset.s, i = +el.dataset.i; const a = S.active.checks[s] = S.active.checks[s] || []; a[i] = !a[i]; save(); rerenderMain(); },
+  set(el) { const s = el.dataset.s, i = +el.dataset.i; const a = S.active.checks[s] = S.active.checks[s] || []; a[i] = !a[i]; if (a[i]) UI.justSet = s + '-' + i; save(); rerenderMain(); },
   rpe(el) { UI.rpe = +el.dataset.v; rerenderMain(); },
   finish() {
     const sess = sessionFor(new Date()), A = S.active;
@@ -1363,9 +1491,9 @@ const ACT = {
   ck(el) { UI.ck = UI.ck || { sleep: 7.5, sore: 0, energy: 0 }; UI.ck[el.dataset.k] = +el.dataset.v; rerenderMain(); },
   'ck-save'() { const c = UI.ck; S.log.check[today()] = { sleep: c.sleep, sore: c.sore, energy: c.energy }; UI.ck = null; save(); rerenderMain(); },
   recheck() { UI.ck = { ...S.log.check[today()] }; delete S.log.check[today()]; save(); rerenderMain(); },
-  water(el) { const v = +el.dataset.v, t = today(), cur = S.log.water[t] || 0; S.log.water[t] = cur === v ? v - 1 : v; save(); rerenderMain(); },
-  fadd(el) { const t = today(); (S.log.food[t] = S.log.food[t] || []).push({ id: el.dataset.v, s: 1 }); save(); rerenderMain(); toast(FOODS[el.dataset.v][0] + ' added'); },
-  addmeal(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; el.dataset.v.split(',').forEach(id => arr.push({ id, s: 1 })); save(); rerenderMain(); toast('Meal logged'); },
+  water(el) { const v = +el.dataset.v, t = today(), cur = S.log.water[t] || 0; S.log.water[t] = cur === v ? v - 1 : v; if (S.log.water[t] === v) UI.justWater = v - 1; save(); rerenderMain(); },
+  fadd(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; arr.push({ id: el.dataset.v, s: 1 }); UI.flash = 'food:' + (arr.length - 1); save(); rerenderMain(); toast(FOODS[el.dataset.v][0] + ' added'); },
+  addmeal(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; UI.flash = 'food:' + arr.length; el.dataset.v.split(',').forEach(id => arr.push({ id, s: 1 })); save(); rerenderMain(); toast('Meal logged'); },
   fdel(el) { S.log.food[today()].splice(+el.dataset.i, 1); save(); rerenderMain(); },
   fs(el) { const it = S.log.food[today()][+el.dataset.i]; it.s = clamp(round(it.s + +el.dataset.d, 1), 0.5, 5); save(); rerenderMain(); },
   reset() { if (!UI.resetArm) { UI.resetArm = true; rerenderMain(); return; } try { localStorage.removeItem(LS); } catch (e) {} if (cloud) cloud.delete().catch(() => {}); S = null; UI.resetArm = false; UI.screen = 'landing'; render(); toast('All data erased'); }
@@ -1384,7 +1512,7 @@ document.addEventListener('input', e => {
 });
 document.addEventListener('submit', e => {
   e.preventDefault();
-  if (e.target.id === 'obform') { if (!validateStep()) { render(); const f = $('.input.err'); if (f) f.focus(); return; } if (UI.obStep < 4) { UI.obStep++; render(); scrollTo(0, 0); } else finishOnboarding(); }
+  if (e.target.id === 'obform') { if (!validateStep()) { render(); const f = $('.input.err'); if (f) f.focus(); return; } if (UI.obStep < 4) { UI.obDir = 'next'; UI.obStep++; render(); scrollTo(0, 0); } else finishOnboarding(); }
   if (e.target.id === 'wform') { const v = parseFloat($('#wkg').value); if (!(v >= 30 && v <= 200)) { toast('Enter a weight between 30 and 200 kg.'); return; } const t = today(); S.log.weight = S.log.weight.filter(w => w.date !== t); S.log.weight.push({ date: t, kg: round(v, 1) }); S.log.weight.sort((a, b) => a.date < b.date ? -1 : 1); S.profile.weight = round(v, 1); save(); rerenderMain(); toast('Weight logged'); }
 });
 
