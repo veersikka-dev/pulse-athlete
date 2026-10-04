@@ -1,6 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#DE4326"><meta name="description" content="Training and fuel planner for student athletes.">
-<title>Pulse Athlete</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Four-week training blocks for the gym you actually have, food targets by the gram and daily readiness. Built for student athletes.">
+<meta name="theme-color" content="#EDEFEA" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0B0E0D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Pulse">
+<link rel="canonical" href="https://veersikka-dev.github.io/pulse-athlete/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Pulse"><meta property="og:title" content="Pulse: train with intent"><meta property="og:description" content="Four-week training blocks for the gym you actually have, food targets by the gram and daily readiness. Built for student athletes."><meta property="og:url" content="https://veersikka-dev.github.io/pulse-athlete/"><meta property="og:image" content="https://veersikka-dev.github.io/pulse-athlete/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Pulse: train with intent"><meta name="twitter:description" content="Four-week training blocks for the gym you actually have, food targets by the gram and daily readiness. Built for student athletes."><meta name="twitter:image" content="https://veersikka-dev.github.io/pulse-athlete/og.png">
+<title>Pulse · Training and fuel for student athletes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
@@ -564,6 +571,89 @@ a.logo{text-decoration:none;color:var(--ink)}
 @media (max-width:860px){body.in-app .mp{bottom:calc(84px + env(safe-area-inset-bottom,0px));right:16px}}
 @media (max-width:560px){.mp-btn .mp-label{max-width:140px}}
 
+/* ---------- premium details ---------- */
+::selection{background:var(--accent);color:var(--accent-ink)}
+html{scrollbar-color:var(--line-2) transparent}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:11px;border:3px solid var(--bg)}
+::-webkit-scrollbar-track{background:transparent}
+kbd{font-family:var(--f-mono);font-size:10.5px;min-width:20px;height:20px;padding:0 5px;display:inline-grid;place-items:center;border-radius:5px;border:1px solid var(--line-2);border-bottom-width:2px;color:var(--ink-2);background:var(--surface);line-height:1}
+.search-btn{display:flex;align-items:center;gap:10px;height:40px;padding:0 8px 0 12px;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--ink-3);font-size:13px;width:100%;transition:border-color .2s,color .2s}
+.search-btn:hover{border-color:var(--line-2);color:var(--ink-2)}
+.search-btn svg{width:15px;height:15px}
+.search-btn kbd{margin-left:auto}
+.cmdk{position:fixed;inset:0;z-index:80;display:flex;justify-content:center;align-items:flex-start;padding:12vh 16px 16px}
+.cmdk-back,.modal-back{position:absolute;inset:0;background:color-mix(in srgb,var(--bg) 55%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:fadein .2s ease both}
+.cmdk-box{position:relative;width:min(620px,100%);background:var(--surface);border:1px solid var(--line-2);border-radius:18px;box-shadow:0 40px 90px -30px rgba(0,0,0,.55),var(--hl);overflow:hidden;animation:cmdin .3s cubic-bezier(.2,.9,.3,1.15) both}
+@keyframes cmdin{from{opacity:0;transform:translateY(-8px) scale(.98)}}
+@keyframes fadein{from{opacity:0}}
+.cmdk-in{display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--line)}
+.cmdk-in svg{width:18px;height:18px;color:var(--ink-3);flex:none}
+.cmdk-in input{flex:1;min-width:0;height:58px;border:0;background:transparent;font-size:16px;outline:none}
+.cmdk-list{max-height:min(420px,55vh);overflow:auto;padding:8px}
+.cmdk-g{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding:10px 10px 6px}
+.cmdk-i{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:9px 10px;border-radius:10px;font-size:14px;color:var(--ink-2)}
+.cmdk-i .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);flex:none;color:var(--ink-2);transition:background .15s,color .15s}
+.cmdk-i .ic svg{width:15px;height:15px}
+.cmdk-i .sub{margin-left:auto;display:flex;gap:4px;align-items:center;font-size:12px;color:var(--ink-3);font-family:var(--f-mono)}
+.cmdk-i[aria-selected="true"]{background:var(--surface-2);color:var(--ink)}
+.cmdk-i[aria-selected="true"] .ic{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.cmdk-empty{padding:30px;text-align:center;color:var(--ink-3);font-size:14px}
+.cmdk-foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);background:var(--surface-2);flex-wrap:wrap}
+.cmdk-foot span{display:flex;align-items:center;gap:5px}
+.rest{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:45;display:flex;align-items:center;gap:14px;padding:9px 10px 9px 9px;border-radius:999px;background:var(--hero-bg);color:var(--hero-fg);box-shadow:0 24px 50px -20px rgba(0,0,0,.6);animation:restin .45s cubic-bezier(.2,.9,.3,1.2) both;max-width:calc(100% - 32px)}
+@keyframes restin{from{opacity:0;transform:translate(-50%,16px) scale(.95)}}
+.rring{position:relative;width:44px;height:44px;flex:none}
+.rring svg{transform:rotate(-90deg);display:block}
+.rring circle{fill:none;stroke-width:4}
+.rring .t{stroke:var(--hero-line)}
+.rring .v{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .2s linear}
+.rest.done .rring .v{stroke:var(--good)}
+.rest .rt{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.rest .rt b{font-family:var(--f-mono);font-size:20px;font-weight:600}
+.rest .rt span{font-size:11px;color:var(--hero-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+.rest button{height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--hero-line);font-size:12px;font-weight:600;color:var(--hero-fg);flex:none}
+.rest button:hover{border-color:var(--hero-fg)}
+body.resting .mp{opacity:0;pointer-events:none}
+.mp{transition:opacity .3s}
+.modal{position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal-box{position:relative;width:min(560px,100%);max-height:84vh;overflow:auto;background:var(--surface);border:1px solid var(--line-2);border-radius:22px;padding:30px;box-shadow:0 40px 90px -30px rgba(0,0,0,.55);animation:cmdin .3s cubic-bezier(.2,.9,.3,1.15) both;display:flex;flex-direction:column;gap:14px}
+.modal-box h2{font-size:28px;font-stretch:125%;font-weight:850;text-transform:uppercase;line-height:1}
+.modal-box p,.modal-box li{color:var(--ink-2);font-size:14.5px;line-height:1.65}
+.modal-box li b{color:var(--ink)}
+.modal-box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.modal-box .mx{position:absolute;top:16px;right:16px}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.badge-i{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);min-width:0;transition:transform .3s cubic-bezier(.2,.9,.3,1.2)}
+.badge-i.got:hover{transform:translateY(-2px)}
+.badge-i .md{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink-3)}
+.badge-i .md svg{width:18px;height:18px}
+.badge-i b{font-size:13.5px}
+.badge-i span{font-size:11.5px;color:var(--ink-3);line-height:1.4}
+.badge-i.got{background:var(--surface);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.badge-i.got .md{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 20px -8px var(--accent)}
+.badge-i:not(.got){opacity:.62}
+.toast{display:flex;align-items:center}
+.toast .ti{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--good);color:var(--surface);margin-right:9px;flex:none}
+.toast .ti svg{width:11px;height:11px}
+.toast.medal{padding:13px 20px 13px 13px;font-size:14px}
+.toast.medal .ti{background:var(--accent);color:var(--accent-ink);width:30px;height:30px}
+.toast.medal .ti svg{width:16px;height:16px}
+.streak{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12.5px;font-weight:650;white-space:nowrap}
+.streak svg{width:13px;height:13px}
+.elapsed{font-family:var(--f-mono);font-size:13px;color:var(--ink-2);display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2)}
+.elapsed i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:beat 1.6s infinite}
+.splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .55s ease,visibility .55s}
+.splash.out{opacity:0;visibility:hidden}
+.splash .in{display:flex;flex-direction:column;align-items:center;gap:18px;width:min(320px,80vw);animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.splash .logo{font-size:32px}
+.install-only{display:none!important}
+body.can-install .install-only{display:inline-flex!important}
+.lfoot .kb{display:inline-flex;align-items:center;gap:6px}
+@media (min-width:861px){body.in-app .rest{left:calc(50% + 124px)}}
+@media (max-width:860px){.rest{bottom:calc(92px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:560px){.cmdk{padding-top:8vh}.cmdk-foot{display:none}.rest .rt span{max-width:110px}}
+
 @media (max-width:1020px){
   .lnav-links{display:none}
   .radio-grid{grid-template-columns:1fr;gap:32px}
@@ -628,6 +718,10 @@ a.logo{text-decoration:none;color:var(--ink)}
 
 <div id="app"></div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div class="cmdk" id="cmdk" hidden><div class="cmdk-back" data-cmdk-close></div><div class="cmdk-box" role="dialog" aria-label="Command menu"><div class="cmdk-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="cmdk-q" placeholder="Search actions, screens or foods…" autocomplete="off" aria-label="Search commands"><kbd>esc</kbd></div><div class="cmdk-list" id="cmdk-list" role="listbox"></div><div class="cmdk-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> select</span><span><kbd>1</kbd>–<kbd>5</kbd> screens</span><span><kbd>M</kbd> music</span><span><kbd>T</kbd> theme</span></div></div></div>
+<div class="modal" id="modal" hidden><div class="modal-back" data-modal-close></div><div class="modal-box" role="dialog" aria-modal="true"><button class="iconbtn mx" data-act="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div id="modal-body" style="display:flex;flex-direction:column;gap:14px"></div></div></div>
+<div class="rest" id="rest" hidden role="timer" aria-live="off"><div class="rring"><svg width="44" height="44"><circle class="t" cx="22" cy="22" r="19"/><circle class="v" id="rest-v" cx="22" cy="22" r="19" stroke-dasharray="119.38" stroke-dashoffset="0"/></svg></div><div class="rt"><b id="rest-time">1:30</b><span id="rest-label">Rest</span></div><button data-act="rest-add">+15s</button><button data-act="rest-skip">Skip</button></div>
+<input type="file" id="imp" accept="application/json,.json" hidden>
 <div class="mp" id="mp">
   <div class="mp-panel" id="mp-panel" hidden role="dialog" aria-label="Pulse Radio">
     <div class="mp-head"><div style="display:flex;flex-direction:column;gap:2px"><span class="eyebrow">Pulse Radio</span><span class="xs faint">Made live in your browser</span></div><button class="mp-x" id="mp-close" aria-label="Close player"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
@@ -1090,6 +1184,7 @@ function sampleState() {
   st.log.food[today()] = [{ id: 'poha', s: 1 }, { id: 'curd', s: 1 }, { id: 'banana', s: 1 }];
   st.log.water[today()] = 4;
   st.log.check[today()] = { sleep: 7.5, sore: 2, energy: 4 };
+  st.badges = { first: iso(addDays(created, 0)), five: iso(addDays(created, -14)), ten: iso(addDays(created, 4)), week: iso(addDays(created, 4)), aware: iso(addDays(created, 10)) };
   return st;
 }
 
@@ -1156,7 +1251,6 @@ function observeReveal(quiet) {
   io = io || new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
   els.forEach(e => io.observe(e));
 }
-function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('on'), 2400); }
 function burst() {
   if (REDUCED) return;
   const cv = $('#fx'), ctx = cv.getContext('2d'), dpr = devicePixelRatio || 1;
@@ -1192,7 +1286,7 @@ function viewLanding() {
   <header class="lnav" id="lnav"><div class="lnav-in">
     <a class="logo" href="#top" data-act="jump" data-v="top"><span class="dot"></span>PULSE</a>
     <nav class="lnav-links" aria-label="Sections"><a href="#how" data-act="jump" data-v="how">How it works</a><a href="#inside" data-act="jump" data-v="inside">Inside the app</a><a href="#science" data-act="jump" data-v="science">The science</a><a href="#radio" data-act="jump" data-v="radio">Pulse Radio</a></nav>
-    <div class="row"><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button><button class="btn btn-primary btn-sm" data-act="start">Build my plan</button></div>
+    <div class="row"><button class="btn btn-ghost btn-sm install-only" data-act="install">${IC.phone.replace('<svg', '<svg width="15" height="15"')}Install app</button><button class="iconbtn" data-act="cmdk" aria-label="Search (${MODK})" title="Search (${MODK})">${IC.search}</button><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button><button class="btn btn-primary btn-sm" data-act="start">Build my plan</button></div>
   </div></header>
   <div class="glow" id="glow"></div>
   <div class="landing" id="top">
@@ -1272,7 +1366,7 @@ function viewLanding() {
       <div class="stack" style="gap:14px"><span class="logo"><span class="dot"></span>PULSE</span><p style="max-width:40ch">Training and fuel planning for student athletes. Built for school gyms, busy weeks and growing bodies.</p></div>
       <div><h4>Product</h4><a href="#how" data-act="jump" data-v="how">How it works</a><a href="#inside" data-act="jump" data-v="inside">Inside the app</a><a href="#radio" data-act="jump" data-v="radio">Pulse Radio</a></div>
       <div><h4>Start</h4><a href="#top" data-act="start">Build my plan</a><a href="#top" data-act="sample">Sample athlete</a><a href="#science" data-act="jump" data-v="science">The science</a></div>
-      <div class="legal"><span>Pulse gives general guidance, not medical advice. Check with a coach, parent or doctor before starting a new programme.</span><span class="mono">Data stays in your browser unless you are signed in.</span></div>
+      <div class="legal"><span class="row wrap" style="gap:16px"><a href="#top" data-act="privacy" style="display:inline">Privacy</a><a href="#top" data-act="terms" style="display:inline">Terms</a><span class="kb">Press <kbd>${MODK}</kbd> anywhere</span></span><span>Pulse gives general guidance, not medical advice. Check with a coach, parent or doctor before starting a new programme.</span><span class="mono">Data stays in your browser unless you are signed in.</span></div>
     </footer>
   </div>`;
 }
@@ -1468,11 +1562,11 @@ function viewApp() {
   if (UI.view === 'session') body = viewSession();
   else body = ({ today: viewToday, plan: viewPlan, fuel: viewFuel, progress: viewProgress, profile: viewProfile })[UI.view]();
   return `<div class="shell">
-    <aside class="rail"><div class="logo"><span class="dot"></span>PULSE</div><nav class="nav"><span class="nav-ind"></span>${nav}</nav>
+    <aside class="rail"><div class="logo"><span class="dot"></span>PULSE</div><button class="search-btn" data-act="cmdk">${IC.search}Search or jump<kbd>${MODK}</kbd></button><nav class="nav" style="margin-top:-12px"><span class="nav-ind"></span>${nav}</nav>
       <div class="rail-foot"><div class="who"><div class="avatar">${esc(initial)}</div><div style="min-width:0"><b>${esc(p.name)}</b><span>${esc(GOALS[p.goal].label)}</span></div></div>
       <div class="row between"><div class="sync ${synced ? 'ok' : ''}"><i></i><span>${S.sample ? 'Sample data, not saved' : synced ? 'Synced to your account' : 'Saved on this device'}</span></div><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button></div></div></aside>
     <div style="min-width:0">
-      <div class="mtop"><div class="logo"><span class="dot"></span>PULSE</div><div class="row"><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button><div class="avatar" style="width:32px;height:32px;font-size:13px">${esc(initial)}</div></div></div>
+      <div class="mtop"><div class="logo"><span class="dot"></span>PULSE</div><div class="row"><button class="iconbtn" data-act="cmdk" aria-label="Search">${IC.search}</button><button class="iconbtn" data-act="theme" aria-label="Toggle light and dark">${I.moon}</button><div class="avatar" style="width:32px;height:32px;font-size:13px">${esc(initial)}</div></div></div>
       <main class="main view-in" id="main">${S.sample ? `<div class="sample-banner"><span><b>Sample athlete.</b> You are exploring Aarav's plan. Nothing here is saved.</span><button class="btn btn-primary btn-sm" data-act="start">Build my own plan ${I.arrow}</button></div>` : ''}${body}</main>
     </div>
     <nav class="tabbar"><span class="nav-ind"></span>${nav}</nav>
@@ -1511,7 +1605,7 @@ function viewToday() {
       ${next ? `<p style="opacity:.75">Next up: <b>${esc(next.s.name)}</b> on ${DAYS_L[wd(next.d)]}, ≈${next.s.mins} min.</p>` : ''}</div>`;
   }
   const kcalLeft = Math.max(0, Math.round(tg.kcal - eaten.kcal));
-  return `<div class="page-head"><div><span class="eyebrow">${now.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}</span><h1 style="margin-top:8px">${greet},<br>${esc(p.name)}.</h1></div></div>
+  return `<div class="page-head"><div><span class="eyebrow">${now.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}</span><h1 style="margin-top:8px">${greet},<br>${esc(p.name)}.</h1></div>${(() => { const n = weekStreak(); return n ? `<span class="streak">${IC.flame}${n}-week streak</span>` : `<span class="pill">Week ${wk} of your block</span>`; })()}</div>
   <div class="grid g-today stagger">
     ${hero}
     <div class="card spot">
@@ -1589,7 +1683,7 @@ function viewSession() {
   const A = S.active;
   const total = sess.exs.reduce((t, e) => t + e.sets, 0), done = sess.exs.reduce((t, e) => t + (A.checks[e.slot] || []).filter(Boolean).length, 0);
   const pct = total ? done / total * 100 : 0;
-  return `<div class="page-head"><div><span class="eyebrow">Live session · ${PHASES[phaseIndex(new Date())].n} week</span><h1 style="margin-top:8px">${esc(sess.name)}</h1><p>Tap a set when you finish it. Add the load you used to track your bests.</p></div><button class="btn btn-ghost btn-sm" data-act="nav" data-v="today">Pause</button></div>
+  return `<div class="page-head"><div><span class="eyebrow">Live session · ${PHASES[phaseIndex(new Date())].n} week</span><h1 style="margin-top:8px">${esc(sess.name)}</h1><p>Tap a set when you finish it. Add the load you used to track your bests.</p></div><div class="row"><span class="elapsed"><i></i><span id="elapsed">0:00</span></span><button class="btn btn-ghost btn-sm" data-act="nav" data-v="today">Pause</button></div></div>
   <div class="card"><div class="row between"><span class="small"><b class="mono">${done}</b><span class="faint"> / ${total} sets</span></span><span class="mono small faint">${Math.round(pct)}%</span></div><div class="progress-line"><i style="width:${pct}%"></i></div></div>
   ${sess.prep ? `<div class="card" style="padding:0;gap:0">${blockHTML({ t: sess.prep.sport + ' prep', min: 5, items: sess.prep.items, why: 'Do after warm-up' })}</div>` : ''}
   <div class="card" style="padding:0;gap:0">
@@ -1667,7 +1761,8 @@ function viewProgress() {
     <div class="card"><div class="card-h"><h3>This week</h3><span class="pill ${weeks[7].n >= planned ? 'good' : 'acc'}"><i></i>${weeks[7].n >= planned ? 'Target hit' : (planned - weeks[7].n) + ' to go'}</span></div>${oval(weeks[7].n, planned)}</div>
     <div class="card"><div class="card-h"><h3>Best loads</h3><span class="faint xs">From your session logs</span></div>
       ${Object.keys(best).length ? Object.entries(best).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => `<div class="pr"><span>${esc(k)}</span><b>${v} kg</b></div>`).join('') : '<div class="empty">Enter the load you lift during a session and your bests show up here.</div>'}</div>
-  </div>`;
+  </div>
+  ${milestonesCard()}`;
 }
 function loadChart(weeks, planned) {
   const w = 420, h = 200, pl = 34, pb = 26, pt = 12, max = Math.max(600, ...weeks.map(x => x.load)), top = Math.ceil(max / 500) * 500;
@@ -1704,6 +1799,8 @@ function viewProfile() {
         <p class="xs faint">Calories use the Mifflin–St Jeor formula with an activity factor for ${p.sessions} sessions a week.</p></div>
       <div class="card"><div class="card-h"><h3>Your data</h3></div>
         <p class="small muted">${S.sample ? 'This is sample data and is not saved.' : synced ? 'Saved on this device and synced to your Claude account, so it follows you to other devices.' : 'Saved on this device only. Open Pulse while signed in to sync it across devices.'}</p>
+        ${S.sample ? '' : `<div class="row wrap" style="gap:8px"><button class="btn btn-ghost btn-sm" data-act="export">${IC.down.replace('<svg', '<svg width="15" height="15"')}Export data</button><button class="btn btn-ghost btn-sm" data-act="import">${IC.up.replace('<svg', '<svg width="15" height="15"')}Import data</button><button class="btn btn-ghost btn-sm install-only" data-act="install">${IC.phone.replace('<svg', '<svg width="15" height="15"')}Install app</button></div>`}
+        <div class="row wrap xs faint" style="gap:14px"><a href="#" data-act="privacy" style="color:inherit">Privacy</a><a href="#" data-act="terms" style="color:inherit">Terms of use</a></div>
         ${S.sample ? `<button class="btn btn-primary" data-act="start">Build my own plan ${I.arrow}</button>` : `<button class="btn btn-ghost" data-act="reset" style="color:var(--bad);border-color:${UI.resetArm ? 'var(--bad)' : 'var(--line-2)'}">${UI.resetArm ? 'Tap again to erase everything' : 'Reset all data'}</button>`}</div>
     </div>
   </div>`;
@@ -1790,8 +1887,16 @@ const ACT = {
   nav(el) { const v = el.dataset.v; if (v === 'plan') UI.planDay = null; UI.resetArm = false; goApp(v); },
   planday(el) { UI.planDay = +el.dataset.v; UI.animDetail = true; rerenderMain(); },
   swap(el) { const k = el.dataset.k; S.swaps = S.swaps || {}; S.swaps[k] = (S.swaps[k] || 0) + 1; save(); UI.flash = 'ex:' + k; rerenderMain(); toast('Exercise swapped'); },
-  begin() { Radio.suggest(['endurance', 'lean'].includes(S.profile.goal) ? 2 : 1, 'Session soundtrack ▶'); const t = today(); if (!S.active || S.active.date !== t) S.active = { date: t, checks: {}, kg: {} }; UI.rpe = null; save(); goApp('session'); },
-  set(el) { const s = el.dataset.s, i = +el.dataset.i; const a = S.active.checks[s] = S.active.checks[s] || []; a[i] = !a[i]; if (a[i]) UI.justSet = s + '-' + i; save(); rerenderMain(); },
+  begin() { Radio.suggest(['endurance', 'lean'].includes(S.profile.goal) ? 2 : 1, 'Session soundtrack ▶'); const t = today(); if (!S.active || S.active.date !== t) S.active = { date: t, checks: {}, kg: {}, started: Date.now() }; if (!S.active.started) S.active.started = Date.now(); UI.rpe = null; save(); goApp('session'); },
+  set(el) { const s = el.dataset.s, i = +el.dataset.i; const a = S.active.checks[s] = S.active.checks[s] || []; a[i] = !a[i]; primeChime();
+    if (a[i]) {
+      UI.justSet = s + '-' + i;
+      const sess = sessionFor(new Date()), ex = sess.exs.find(x => String(x.slot) === String(s));
+      const left = sess.exs.reduce((t, e) => t + e.sets - (S.active.checks[e.slot] || []).filter(Boolean).length, 0);
+      if (left === 0) { stopRest(); toast('All sets done. Rate the session to finish.'); }
+      else if (ex) startRest(ex.rest, (a.filter(Boolean).length >= ex.sets ? 'Next exercise · ' : 'Rest · ') + ex.n);
+    }
+    save(); rerenderMain(); },
   rpe(el) { UI.rpe = +el.dataset.v; rerenderMain(); },
   finish() {
     const sess = sessionFor(new Date()), A = S.active;
@@ -1799,14 +1904,14 @@ const ACT = {
     const kg = {}; Object.entries(A.kg).forEach(([k, v]) => { if (+v > 0) kg[k] = +v; });
     S.log.sessions = S.log.sessions.filter(s => s.date !== A.date);
     S.log.sessions.push({ date: A.date, name: sess.name, rpe: UI.rpe, mins: sess.mins, load: UI.rpe * sess.mins, done, total, kg });
-    S.active = null; UI.rpe = null; save(); goApp('today'); burst(); Radio.suggest(3, 'Cool-down mix ▶'); toast('Session logged. Nice work.');
+    S.active = null; UI.rpe = null; stopRest(); save(); goApp('today'); burst(); Radio.suggest(3, 'Cool-down mix ▶'); toast('Session logged. Nice work.'); checkMilestones();
   },
   ck(el) { UI.ck = UI.ck || { sleep: 7.5, sore: 0, energy: 0 }; UI.ck[el.dataset.k] = +el.dataset.v; rerenderMain(); },
-  'ck-save'() { const c = UI.ck; S.log.check[today()] = { sleep: c.sleep, sore: c.sore, energy: c.energy }; UI.ck = null; save(); rerenderMain(); },
+  'ck-save'() { const c = UI.ck; S.log.check[today()] = { sleep: c.sleep, sore: c.sore, energy: c.energy }; UI.ck = null; save(); rerenderMain(); checkMilestones(); },
   recheck() { UI.ck = { ...S.log.check[today()] }; delete S.log.check[today()]; save(); rerenderMain(); },
-  water(el) { const v = +el.dataset.v, t = today(), cur = S.log.water[t] || 0; S.log.water[t] = cur === v ? v - 1 : v; if (S.log.water[t] === v) UI.justWater = v - 1; save(); rerenderMain(); },
-  fadd(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; arr.push({ id: el.dataset.v, s: 1 }); UI.flash = 'food:' + (arr.length - 1); save(); rerenderMain(); toast(FOODS[el.dataset.v][0] + ' added'); },
-  addmeal(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; UI.flash = 'food:' + arr.length; el.dataset.v.split(',').forEach(id => arr.push({ id, s: 1 })); save(); rerenderMain(); toast('Meal logged'); },
+  water(el) { const v = +el.dataset.v, t = today(), cur = S.log.water[t] || 0; S.log.water[t] = cur === v ? v - 1 : v; if (S.log.water[t] === v) UI.justWater = v - 1; save(); rerenderMain(); checkMilestones(); },
+  fadd(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; arr.push({ id: el.dataset.v, s: 1 }); UI.flash = 'food:' + (arr.length - 1); save(); rerenderMain(); checkMilestones(); toast(FOODS[el.dataset.v][0] + ' added'); },
+  addmeal(el) { const t = today(); const arr = S.log.food[t] = S.log.food[t] || []; UI.flash = 'food:' + arr.length; el.dataset.v.split(',').forEach(id => arr.push({ id, s: 1 })); save(); rerenderMain(); checkMilestones(); toast('Meal logged'); },
   fdel(el) { S.log.food[today()].splice(+el.dataset.i, 1); save(); rerenderMain(); },
   fs(el) { const it = S.log.food[today()][+el.dataset.i]; it.s = clamp(round(it.s + +el.dataset.d, 1), 0.5, 5); save(); rerenderMain(); },
   reset() { if (!UI.resetArm) { UI.resetArm = true; rerenderMain(); return; } try { localStorage.removeItem(LS); } catch (e) {} if (cloud) cloud.delete().catch(() => {}); S = null; UI.resetArm = false; UI.screen = 'landing'; render(); toast('All data erased'); }
@@ -1972,7 +2077,7 @@ const Radio = (() => {
   function ui() {
     const T = TRACKS[cur];
     $('#mp-name').textContent = T.name; $('#mp-meta').textContent = `${T.tag} · ${T.bpm} BPM`;
-    $('#mp-label').textContent = playing ? `${T.name} · ${T.bpm} BPM` : (off ? '' : auto && !ctx ? 'Tap anywhere for music' : 'Gym music');
+    $('#mp-label').textContent = playing ? `${T.name} · ${T.bpm} BPM` : (off ? '' : auto && !ctx ? 'Tap for music' : 'Gym music');
     const pb = $('#mp-play'); pb.setAttribute('aria-label', playing ? 'Pause' : 'Play');
     pb.innerHTML = playing ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>' : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
     $('#mp-list').innerHTML = TRACKS.map((t, i) => `<button data-t="${i}" aria-pressed="${i === cur}"><span class="n">${i === cur && playing ? '▶' : String(i + 1).padStart(2, '0')}</span><span><b>${t.name}</b><span>${t.tag}</span></span><span class="mono xs faint">${t.bpm}</span></button>`).join('');
@@ -2013,7 +2118,7 @@ const Radio = (() => {
     $('#mp-list').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (!b) return; const i = +b.dataset.t; if (i === cur && playing) return; setTrack(i); if (!playing) start(); });
     $('#mp-vol').addEventListener('input', e => { vol = +e.target.value; persist(); if (ctx && playing) master.gain.setTargetAtTime(vol, ctx.currentTime, 0.05); });
     // background music: browsers only allow sound after a gesture, so start on the first one
-    const first = e => { removeEventListener('pointerdown', first, true); removeEventListener('keydown', first, true); if (!auto || off || playing) return; if (e.target.closest && e.target.closest('#mp, [data-radio]')) return; if (e.target.closest && e.target.closest('#mp-play')) return; start(); };
+    const first = e => { if (e.type === 'keydown' && (/^[mM]$/.test(e.key) || e.metaKey || e.ctrlKey)) return; removeEventListener('pointerdown', first, true); removeEventListener('keydown', first, true); if (!auto || off || playing) return; if (e.target.closest && e.target.closest('#cmdk')) return; if (e.target.closest && e.target.closest('#mp, [data-radio]')) return; if (e.target.closest && e.target.closest('#mp-play')) return; start(); };
     addEventListener('pointerdown', first, true); addEventListener('keydown', first, true);
     document.addEventListener('visibilitychange', () => { if (playing && ctx) tick(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.focus(); } });
@@ -2022,8 +2127,231 @@ const Radio = (() => {
   // suggest a track that fits what the athlete is doing, without auto-playing
   function suggest(i, label) { if (off) return; if (playing) { if (i !== cur) setTrack(i); return; } cur = i; persist(); ui(); $('#mp-label').textContent = label; const b = $('#mp-btn'); b.classList.remove('ask'); void b.offsetWidth; b.classList.add('ask'); }
   function playTrack(i) { if (i === cur && playing) { auto = false; persist(); stop(); return; } off = false; auto = true; persist(); if (i !== cur) setTrack(i); if (!playing) start(); else ui(); }
-  return { bind, suggest, playTrack, TRACKS, get playing() { return playing; }, get state() { return { cur, playing }; } };
+  return { bind, suggest, playTrack, toggle: () => playTrack(cur), TRACKS, get playing() { return playing; }, get state() { return { cur, playing }; } };
 })();
+
+/* =========================================================
+   PREMIUM LAYER — command menu, shortcuts, rest timer,
+   milestones, privacy, data export, install, splash
+   ========================================================= */
+const MODK = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || '') ? '⌘K' : 'Ctrl K';
+const IC = {
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+  play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>',
+  scale: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="M8.5 10a5 5 0 0 1 7 0M12 10l1.5-2"/></svg>',
+  medal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M8.5 9.6 6 3h4l2 4 2-4h4l-2.5 6.6"/></svg>',
+  flame: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.2 1-3.6 2-4.6.2 1.6 1 2.6 2 2.6-1-3 0-6 1-9Z"/></svg>',
+  music: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+  pulse: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>',
+  food: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0Z"/></svg>',
+  shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"/></svg>',
+  jump: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>',
+  down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>',
+  up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V9M7 14l5-5 5 5M5 4h14"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg>'
+};
+
+/* ---------- toasts ---------- */
+function toast(msg, kind = 'ok') {
+  const t = $('#toast');
+  t.className = 'toast' + (kind === 'medal' ? ' medal' : '');
+  t.innerHTML = `<span class="ti">${kind === 'medal' ? IC.medal : IC.check}</span>${msg}`;
+  void t.offsetWidth; t.classList.add('on');
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('on'), kind === 'medal' ? 4200 : 2600);
+}
+
+/* ---------- streaks + milestones ---------- */
+function weekStreak() {
+  if (!S) return 0;
+  const planned = trainingDays(S.profile).length, mon = mondayOf(new Date());
+  let n = weekDone(mon) >= planned ? 1 : 0;
+  for (let k = 1; k < 52; k++) { if (weekDone(addDays(mon, -7 * k)) >= planned) n++; else break; }
+  return n;
+}
+const MILESTONES = [
+  ['first', 'First session', 'Logged your first workout', st => st.log.sessions.length >= 1],
+  ['five', 'Five down', 'Five sessions logged', st => st.log.sessions.length >= 5],
+  ['ten', 'Double digits', 'Ten sessions logged', st => st.log.sessions.length >= 10],
+  ['quarter', 'Twenty-five', '25 sessions. That is a habit.', st => st.log.sessions.length >= 25],
+  ['week', 'Full week', 'Every planned session in a week', st => weekDone(mondayOf(new Date())) >= trainingDays(st.profile).length],
+  ['streak', 'Three in a row', 'Three full weeks back to back', () => weekStreak() >= 3],
+  ['hydrated', 'Hydrated', 'Hit your water target in a day', st => (st.log.water[today()] || 0) >= Math.round(targets(st.profile, !!sessionFor(new Date())).water / 250)],
+  ['protein', 'Protein on point', 'Hit your protein target in a day', st => sumFoods(st.log.food[today()] || []).p >= targets(st.profile).protein],
+  ['aware', 'Self-aware', 'Three readiness check-ins', st => Object.keys(st.log.check).length >= 3]
+];
+function checkMilestones(quiet = false) {
+  if (!S || S.sample || !S.profile) return;
+  S.badges = S.badges || {};
+  const fresh = MILESTONES.filter(([id, , , test]) => { try { return !S.badges[id] && test(S); } catch (e) { return false; } });
+  if (!fresh.length) return;
+  fresh.forEach(([id]) => S.badges[id] = today());
+  save();
+  if (!quiet) { const [, t, d] = fresh[fresh.length - 1]; setTimeout(() => { toast(`<b>${esc(t)}</b>&nbsp;·&nbsp;${esc(d)}`, 'medal'); burst(); }, 500); }
+}
+function milestonesCard() {
+  const got = S.badges || {};
+  const n = MILESTONES.filter(m => got[m[0]]).length;
+  return `<div class="card"><div class="card-h"><h3>Milestones</h3><span class="pill ${n ? 'acc' : ''}">${n} of ${MILESTONES.length}</span></div>
+    <div class="badges">${MILESTONES.map(([id, t, d]) => `<div class="badge-i ${got[id] ? 'got' : ''}"><span class="md">${IC.medal}</span><b>${esc(t)}</b><span>${got[id] ? 'Earned ' + fmtDate(parseIso(got[id])) : esc(d)}</span></div>`).join('')}</div></div>`;
+}
+
+/* ---------- rest timer ---------- */
+let restT = 0, chimeCtx = null;
+function primeChime() { try { chimeCtx = chimeCtx || new (window.AudioContext || window.webkitAudioContext)(); chimeCtx.resume(); } catch (e) {} }
+function chime() {
+  if (!chimeCtx) return;
+  const t = chimeCtx.currentTime;
+  [880, 1320].forEach((f, i) => { const o = chimeCtx.createOscillator(), g = chimeCtx.createGain(), s = t + i * 0.15; o.type = 'sine'; o.frequency.value = f; g.gain.setValueAtTime(0.0001, s); g.gain.exponentialRampToValueAtTime(0.22, s + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, s + 0.55); o.connect(g); g.connect(chimeCtx.destination); o.start(s); o.stop(s + 0.6); });
+}
+function startRest(sec, label) {
+  const el = $('#rest'); clearInterval(restT);
+  UI.restEnd = Date.now() + sec * 1000; UI.restTotal = sec;
+  el.hidden = false; el.classList.remove('done'); document.body.classList.add('resting');
+  el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
+  $('#rest-label').textContent = label;
+  const C = 2 * Math.PI * 19;
+  const tick = () => {
+    const left = Math.max(0, UI.restEnd - Date.now()), s = Math.ceil(left / 1000);
+    $('#rest-time').textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    $('#rest-v').setAttribute('stroke-dashoffset', C * (1 - left / (UI.restTotal * 1000)));
+    if (left <= 0) { clearInterval(restT); el.classList.add('done'); $('#rest-label').textContent = 'Rest over. Next set.'; chime(); try { navigator.vibrate && navigator.vibrate([120, 60, 120]); } catch (e) {} restT = setTimeout(stopRest, 2600); }
+  };
+  tick(); restT = setInterval(tick, 200);
+}
+function stopRest() { clearInterval(restT); clearTimeout(restT); const el = $('#rest'); if (el) el.hidden = true; document.body.classList.remove('resting'); }
+setInterval(() => { const e = $('#elapsed'); if (e && S && S.active && S.active.started) { const s = Math.floor((Date.now() - S.active.started) / 1000); e.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; } }, 1000);
+
+/* ---------- command menu ---------- */
+const CMD = { items: [], sel: 0, list: [] };
+function commands(q) {
+  const L = [], add = (g, label, ic, run, kbd = '', kw = '') => L.push({ g, label, ic, run, kbd, kw });
+  const inApp = UI.screen === 'app' && S && S.profile;
+  if (inApp) {
+    NAV.forEach(([k, l], i) => add('Go to', l, I[k], () => ACT.nav({ dataset: { v: k } }), String(i + 1)));
+    if (sessionFor(new Date()) && !S.log.sessions.some(x => x.date === today())) add('Train', S.active && S.active.date === today() ? "Resume today's session" : "Start today's session", IC.play, () => ACT.begin(), '', 'workout train lift');
+    add('Log', 'Add a glass of water', IC.drop, () => { const t = today(); S.log.water[t] = (S.log.water[t] || 0) + 1; save(); checkMilestones(); if (UI.view === 'today') rerenderMain(); toast(`Water logged · ${(S.log.water[t] * 0.25).toFixed(2)} L today`); }, '', 'hydrate drink');
+    add('Log', 'Log body weight', IC.scale, () => { goApp('progress'); setTimeout(() => { const w = $('#wkg'); if (w) { w.scrollIntoView({ block: 'center' }); w.focus(); } }, 400); }, '', 'kg weigh scale');
+    add('Log', 'Readiness check-in', IC.pulse, () => goApp('today'), '', 'sleep soreness energy');
+    if (q && q.length > 1) Object.keys(FOODS).filter(id => foodOk(id, S.profile) && FOODS[id][0].toLowerCase().includes(q)).slice(0, 5).forEach(id => add('Log food', `Log ${FOODS[id][0]}`, IC.food, () => { ACT.fadd({ dataset: { v: id } }); }, `${FOODS[id][2]} kcal`, 'food eat'));
+    if (!S.sample) add('Account', 'Edit profile', I.profile, () => ACT.edit(), '', 'settings goal sport');
+    if (!S.sample) add('Account', 'Export my data', IC.down, () => ACT.export(), '', 'backup download json');
+  } else {
+    add('Start', 'Build my plan', I.arrow.replace('class="arrow" ', ''), () => ACT.start(), '', 'begin onboarding');
+    add('Start', 'Explore a sample athlete', I.profile, () => ACT.sample(), '', 'demo aarav');
+    if (UI.screen === 'landing') [['how', 'How it works'], ['inside', 'Inside the app'], ['science', 'The science'], ['radio', 'Pulse Radio']].forEach(([v, l]) => add('Jump to', l, IC.jump, () => ACT.jump({ dataset: { v } })));
+  }
+  add('Music', Radio.playing ? 'Pause music' : 'Play music', IC.music, () => Radio.toggle(), 'M', 'radio sound');
+  Radio.TRACKS.forEach((t, i) => add('Music', `Play ${t.name}`, IC.music, () => Radio.playTrack(i), t.bpm + ' BPM', t.tag + ' ' + t.style));
+  add('Preferences', 'Toggle light and dark', I.moon, () => ACT.theme(), 'T', 'theme mode dark light');
+  if (DEFER_INSTALL) add('Preferences', 'Install Pulse as an app', IC.phone, () => ACT.install(), '', 'home screen pwa');
+  add('Help', 'Privacy', IC.shield, () => ACT.privacy(), '', 'data policy');
+  add('Help', 'Terms of use', IC.shield, () => ACT.terms(), '', 'legal');
+  return L;
+}
+function openCmdk() {
+  const m = $('#cmdk'); m.hidden = false; const q = $('#cmdk-q'); q.value = ''; CMD.sel = 0; renderCmdk(); q.focus();
+}
+function closeCmdk() { $('#cmdk').hidden = true; }
+function renderCmdk() {
+  const q = $('#cmdk-q').value.trim().toLowerCase();
+  const all = commands(q);
+  const list = q ? all.filter(c => (c.label + ' ' + c.kw + ' ' + c.g).toLowerCase().includes(q)).sort((a, b) => (b.label.toLowerCase().startsWith(q)) - (a.label.toLowerCase().startsWith(q))) : all;
+  CMD.list = list; CMD.sel = clamp(CMD.sel, 0, Math.max(0, list.length - 1));
+  let html = '', g = null;
+  list.forEach((c, i) => { if (c.g !== g) { g = c.g; html += `<div class="cmdk-g">${esc(g)}</div>`; } html += `<button class="cmdk-i" role="option" data-ci="${i}" aria-selected="${i === CMD.sel}"><span class="ic">${c.ic}</span><span>${esc(c.label)}</span>${c.kbd ? `<span class="sub">${c.kbd.length <= 2 ? `<kbd>${esc(c.kbd)}</kbd>` : esc(c.kbd)}</span>` : ''}</button>`; });
+  $('#cmdk-list').innerHTML = html || `<div class="cmdk-empty">No matches for “${esc(q)}”</div>`;
+  const s = $('#cmdk-list [aria-selected="true"]'); if (s) s.scrollIntoView({ block: 'nearest' });
+}
+function runCmd(i) { const c = CMD.list[i]; if (!c) return; closeCmdk(); setTimeout(c.run, 10); }
+
+/* ---------- modal: privacy + terms ---------- */
+function openModal(html) { const m = $('#modal'); $('#modal-body').innerHTML = html; m.hidden = false; $('#modal .mx').focus(); }
+function closeModal() { $('#modal').hidden = true; }
+const PRIVACY = `<span class="eyebrow">Last updated October 2026</span><h2>Privacy</h2>
+  <p>Pulse is built so your information stays with you.</p>
+  <ul><li><b>Stored in your browser.</b> Your profile, plan and logs are saved on this device. Clearing your browser data removes them.</li>
+  <li><b>No accounts, no tracking.</b> Pulse has no analytics, advertising or tracking cookies, and never sells data.</li>
+  <li><b>Optional sync.</b> If you open Pulse inside Claude while signed in, your data also syncs to your own private space there so it follows you between devices.</li>
+  <li><b>Fonts.</b> Typefaces load from Google Fonts, which receives your IP address when the page loads.</li>
+  <li><b>Your control.</b> Export your data any time from Profile, or erase it with Reset all data.</li></ul>`;
+const TERMS = `<span class="eyebrow">Last updated October 2026</span><h2>Terms of use</h2>
+  <ul><li><b>General guidance only.</b> Pulse provides general fitness and nutrition information. It is not medical advice and does not replace a coach, doctor or dietitian.</li>
+  <li><b>Check first.</b> Talk to a coach, parent or doctor before starting a new programme or changing your diet, especially if you are under 18 or have an injury or condition.</li>
+  <li><b>Listen to your body.</b> Stop any exercise that causes pain, dizziness or unusual discomfort.</li>
+  <li><b>No guarantees.</b> Plans and targets are estimates. Results vary from person to person.</li>
+  <li><b>Music.</b> Pulse Radio tracks are original and generated live in your browser.</li></ul>`;
+
+/* ---------- install (PWA) ---------- */
+let DEFER_INSTALL = null;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); DEFER_INSTALL = e; document.body.classList.add('can-install'); });
+addEventListener('appinstalled', () => { DEFER_INSTALL = null; document.body.classList.remove('can-install'); toast('Pulse installed'); });
+
+Object.assign(ACT, {
+  cmdk() { openCmdk(); },
+  privacy() { openModal(PRIVACY); },
+  terms() { openModal(TERMS); },
+  'modal-close'() { closeModal(); },
+  'rest-add'() { UI.restEnd += 15000; UI.restTotal += 15; },
+  'rest-skip'() { stopRest(); },
+  async install() { if (!DEFER_INSTALL) { toast('Use your browser menu: Add to Home Screen'); return; } DEFER_INSTALL.prompt(); try { await DEFER_INSTALL.userChoice; } catch (e) {} DEFER_INSTALL = null; document.body.classList.remove('can-install'); },
+  export() {
+    if (!S || S.sample) return;
+    const json = JSON.stringify(S, null, 2);
+    // the embedded (Claude) view blocks downloads, so copy instead of pretending to save
+    if (window.self !== window.top) { navigator.clipboard.writeText(json).then(() => toast('Data copied to clipboard')).catch(() => toast('Copy was blocked. Open Pulse in its own tab to export.')); return; }
+    try {
+      const blob = new Blob([json], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `pulse-data-${today()}.json`;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+      toast('Data exported');
+    } catch (e) { toast('Export is not available in this view'); }
+  },
+  import() { $('#imp').click(); }
+});
+document.addEventListener('change', e => {
+  if (e.target.id !== 'imp' || !e.target.files[0]) return;
+  const r = new FileReader();
+  r.onload = () => { try { const d = JSON.parse(r.result); if (!d || !d.profile || !d.log) throw 0; d.sample = false; S = d; save(); UI.screen = 'app'; UI.view = 'today'; render(); toast('Data imported'); } catch (err) { toast('That file is not a Pulse export'); } };
+  r.readAsText(e.target.files[0]); e.target.value = '';
+});
+
+/* ---------- keyboard ---------- */
+document.addEventListener('keydown', e => {
+  const k = e.key, mod = e.metaKey || e.ctrlKey, cm = $('#cmdk');
+  if (mod && k.toLowerCase() === 'k') { e.preventDefault(); cm.hidden ? openCmdk() : closeCmdk(); return; }
+  if (!cm.hidden) {
+    if (k === 'Escape') { e.preventDefault(); closeCmdk(); }
+    else if (k === 'ArrowDown' || k === 'ArrowUp') { e.preventDefault(); CMD.sel = (CMD.sel + (k === 'ArrowDown' ? 1 : -1) + CMD.list.length) % Math.max(1, CMD.list.length); renderCmdk(); }
+    else if (k === 'Enter') { e.preventDefault(); runCmd(CMD.sel); }
+    return;
+  }
+  if (k === 'Escape' && !$('#modal').hidden) { closeModal(); return; }
+  const tag = (e.target.tagName || '').toLowerCase();
+  if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable || mod || e.altKey) return;
+  if (k === '/') { e.preventDefault(); openCmdk(); }
+  else if (k === 'm' || k === 'M') Radio.toggle();
+  else if (k === 't' || k === 'T') ACT.theme();
+  else if (UI.screen === 'app' && /^[1-5]$/.test(k)) ACT.nav({ dataset: { v: NAV[+k - 1][0] } });
+});
+document.addEventListener('input', e => { if (e.target.id === 'cmdk-q') { CMD.sel = 0; renderCmdk(); } });
+document.addEventListener('click', e => {
+  const ci = e.target.closest('[data-ci]'); if (ci) { runCmd(+ci.dataset.ci); return; }
+  if (e.target.closest('[data-cmdk-close]')) closeCmdk();
+  if (e.target.closest('[data-modal-close]')) closeModal();
+});
+document.addEventListener('mousemove', e => { const ci = e.target.closest && e.target.closest('[data-ci]'); if (ci && +ci.dataset.ci !== CMD.sel) { CMD.sel = +ci.dataset.ci; $$('#cmdk-list [data-ci]').forEach(b => b.setAttribute('aria-selected', +b.dataset.ci === CMD.sel)); } });
+
+/* ---------- splash (standalone site, once per visit) ---------- */
+function splash() {
+  let seen = true; try { seen = !!sessionStorage.getItem('pulse.splash'); sessionStorage.setItem('pulse.splash', '1'); } catch (e) {}
+  if (seen || REDUCED || window.self !== window.top) return;
+  const el = document.createElement('div'); el.className = 'splash';
+  el.innerHTML = `<div class="in"><div class="logo"><span class="dot"></span>PULSE</div>${ecg()}</div>`;
+  document.body.appendChild(el);
+  setTimeout(() => el.classList.add('out'), 1100); setTimeout(() => el.remove(), 1700);
+}
 
 /* ---------- boot ---------- */
 (function boot() {
@@ -2032,7 +2360,11 @@ const Radio = (() => {
   if (S && S.profile) UI.screen = 'app';
   render();
   Radio.bind();
+  splash();
+  checkMilestones(true);
   initCloud();
+  // offline support and install on the public site only
+  if ('serviceWorker' in navigator && window.self === window.top && /github\.io$|^localhost$|^127\./.test(location.hostname)) navigator.serviceWorker.register('sw.js').catch(() => {});
 })();
 </script>
 </body></html>
