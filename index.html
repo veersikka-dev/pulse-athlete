@@ -2300,7 +2300,13 @@ Object.assign(ACT, {
     if (!S || S.sample) return;
     const json = JSON.stringify(S, null, 2);
     // the embedded (Claude) view blocks downloads, so copy instead of pretending to save
-    if (window.self !== window.top) { navigator.clipboard.writeText(json).then(() => toast('Data copied to clipboard')).catch(() => toast('Copy was blocked. Open Pulse in its own tab to export.')); return; }
+    if (window.self !== window.top) {
+      // inside Claude: save through the viewer's download permission, else copy to the clipboard
+      const copy = () => navigator.clipboard.writeText(json).then(() => toast('Data copied to clipboard')).catch(() => toast('Open Pulse in its own tab to export'));
+      const dl = window.claude && typeof window.claude.use === 'function' ? window.claude.use('downloads') : Promise.resolve(null);
+      dl.then(d => d ? d.save({ filename: `pulse-data-${today()}.json`, data: json }).then(() => toast('Data exported'), err => { if (!err || err.code !== 'declined') copy(); }) : copy());
+      return;
+    }
     try {
       const blob = new Blob([json], { type: 'application/json' });
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `pulse-data-${today()}.json`;
